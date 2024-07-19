@@ -1,9 +1,9 @@
 {
   "name": "mielo-react-slider",
   "version": "1.0.0",
-  "main": "dist/cjs/index.js",
-  "types": "dist/types.d.ts",
   "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/friktor/mielo-react-slider/issues"
   },
@@ -24,7 +24,9 @@
   "scripts": {
     "style": "prettier --config .prettierrc '{src,lib}/**/*.{ts,tsx,scss,css}' --write",
     "lint": "eslint '*/**/*.{ts,tsx}' --quiet --fix",
-    "build": "rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist",
+    "build": "npm run clean && rollup -c --bundleConfigAsCjs",
+    "tsc": "tsc",
     "fmt": "npm run style && npm run lint"
   },
   "dependencies": {

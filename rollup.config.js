@@ -7,6 +7,7 @@ import dts from "rollup-plugin-dts"
 
 const packageJson = require("./package.json")
 // "module": "dist/esm/index.js",
+// "type": "module",
 
 export default [
   {
@@ -28,16 +29,12 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      terser(),
-    ],
-    external: [
-      "react",
-      "react-dom",
+      // terser(),
     ],
   },
   {
     input: "src/index.ts",
-    output: [{ file: "dist/types.d.ts", format: "es" }],
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts.default()],
   },
 ]

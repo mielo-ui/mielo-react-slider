@@ -1,5 +1,4 @@
 import ReactSlider, { ReactRangeSliderProps } from "react-range-slider-input"
-import { useCallback } from "react"
 import clsx from "clsx"
 
 import { RangeSlider } from "./RangeSlider"
@@ -28,9 +27,9 @@ function Slider({
 }: SliderProps) {
   const className = clsx("mie slider", accent, size, _className)
 
-  const onChange = useCallback(([min, max]: number[]) => {
+  const onChange = ([_min, max]: number[]) => {
     _onChange?.(max)
-  }, [])
+  }
 
   const defaultValue = !_defaultValue ? undefined : [0, _defaultValue]
   const value = !_value ? undefined : [0, _value]
