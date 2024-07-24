@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/friktor/mielo-react-slider/issues"
+    "url": "https://github.com/mielo-ui/mielo-react-slider/issues"
   },
   "keywords": [
     "slider",

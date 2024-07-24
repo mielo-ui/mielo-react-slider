@@ -1,7 +1,15 @@
-# Mielo React Slider
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mielo-ui/mielo.css/main/logo.png" />
+</p>
 
-Slider react component, part of Mielo UI.
-This module is wrapper around `react-range-slider-input`.
+<h1 align="center">
+  Mielo React Slider
+</h1>
+
+<p align="center">
+  Slider react component, part of Mielo UI.
+  This module is wrapper around `react-range-slider-input`.
+</p>
 
 ## Quick install
 
