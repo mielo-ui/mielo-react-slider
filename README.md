@@ -18,7 +18,7 @@ Mielo is constantly in development! Try it out now:
 ### NPM
 
 ```sh
-npm install mielo mielo-react-slider
+npm install @mielo-ui/mielo @mielo-ui/mielo-react-slider
 ```
 
 **or**
@@ -26,7 +26,7 @@ npm install mielo mielo-react-slider
 ### Yarn
 
 ```sh
-npm install mielo mielo-react-slider
+npm install @mielo-ui/mielo @mielo-ui/mielo-react-slider
 ```
 
 ### Import
@@ -34,13 +34,13 @@ npm install mielo mielo-react-slider
 After installation, you can import the CSS file into your project using this snippet:
 
 ```sh
-@import 'mielo/css/mielo.css'
+@import '@mielo-ui/mielo/css/mielo.css'
 ```
 
 And usage react components like
 
 ``` typescript
-import { Slider } from "mielo-react-slider"
+import { Slider } from "@mielo-ui/mielo-react-slider"
 
 <Slider label="Success" accent="success" />
 ```
@@ -58,13 +58,13 @@ Mielo is compatible with **recent** versions of:
 Internet Explorer is not supported.
 
 ## Documentation
-Browse the [online documentation here.](#todo)
+Browse the [online documentation here.](https://mielo-ui.github.io/slider)
 
 # Development
 For build library from source:
 
 ``` sh
-git clone https://github.com/friktor/mielo-react-slider
+git clone https://github.com/mielo-ui/mielo-react-slider
 cd mielo-react-slider
 
 npm install # or "yarn"
