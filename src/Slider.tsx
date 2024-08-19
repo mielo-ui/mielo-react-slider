@@ -1,20 +1,9 @@
-import ReactSlider, { ReactRangeSliderProps } from "react-range-slider-input"
+import ReactSlider from "react-range-slider-input"
 import clsx from "clsx"
 
 import { RangeSlider } from "./RangeSlider"
-
-export interface SliderProps
-  extends Omit<
-    ReactRangeSliderProps,
-    "onChange" | "defaultValue" | "value" | "rangeSlideDisabled"
-  > {
-  accent?: "warning" | "error" | "success"
-  size?: "large" | "small"
-
-  onChange?: (newValue: number) => void
-  defaultValue?: number
-  value?: number
-}
+import { SliderProps } from "./Props"
+import * as helpers from "./helpers"
 
 function Slider({
   defaultValue: _defaultValue,
@@ -22,10 +11,16 @@ function Slider({
   onChange: _onChange,
   value: _value,
   accent,
+  color,
+  style,
   size,
-  ...props
+  ...rest
 }: SliderProps) {
-  const className = clsx("mie slider", accent, size, _className)
+  const accentClassName = accent && (accent === true ? "accent" : accent)
+  const sliderProps: any = helpers._sliderProps(rest)
+  const otherProps: any = helpers._otherProps(rest)
+
+  const className = clsx("mie slider", accentClassName, color, size, _className)
 
   const onChange = ([_min, max]: number[]) => {
     _onChange?.(max)
@@ -35,9 +30,9 @@ function Slider({
   const value = !_value ? undefined : [0, _value]
 
   return (
-    <div className={className}>
+    <div {...otherProps} style={style} className={className}>
       <ReactSlider
-        {...props}
+        {...sliderProps}
         thumbsDisabled={[true, false]}
         rangeSlideDisabled={true}
         defaultValue={defaultValue}

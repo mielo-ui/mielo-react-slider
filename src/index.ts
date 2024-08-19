@@ -1,5 +1,12 @@
-export type { SliderProps } from "./Slider"
-export { default as Slider } from "./Slider"
+export type {
+  RangeSliderBaseProps,
+  RangeSliderValue,
+  RangeSliderProps,
+  SliderAccent,
+  SliderProps,
+  SliderColor,
+  SliderSize,
+} from "./Props"
 
-export type { RangeSliderProps } from "./RangeSlider"
+export { default as Slider } from "./Slider"
 export { RangeSlider } from "./RangeSlider"

@@ -1,44 +1,40 @@
 // Its wrapper around library
 // https://github.com/n3r4zzurr0/react-range-slider-input
 
-import Slider, { ReactRangeSliderProps } from "react-range-slider-input"
+import Slider from "react-range-slider-input"
 import clsx from "clsx"
 
-export interface RangeSliderValue {
-  min: number
-  max: number
-}
-
-export interface RangeSliderProps extends Omit<ReactRangeSliderProps, "onChange" | "defaultValue" | "value"> {
-  onChange?: (newValue: RangeSliderValue) => void
-  defaultValue?: RangeSliderValue 
-  value?: RangeSliderValue
-}
+import { RangeSliderProps } from "./Props"
+import * as helpers from "./helpers"
 
 export function RangeSlider({
   defaultValue: _defaultValue,
   className: _className,
   onChange: _onChange,
   value: _value,
-  ...props
+  style,
+  ...rest
 }: RangeSliderProps) {
-  const className = clsx("mie slider range", _className)
-
-  const onChange = ([ min, max ]: number[]) => {
-    _onChange?.({ min, max })
-  }
+  const sliderProps: any = helpers._sliderProps(rest)
+  const otherProps: any = helpers._otherProps(rest)
 
   const defaultValue = !_defaultValue ? undefined : [_defaultValue.min, _defaultValue.max]
   const value = !_value ? undefined : [_value.min, _value.max]
+  
+  const onChange = ([ min, max ]: number[]) => {
+    _onChange?.({ min, max })
+  }
+  
+  const className = clsx("mie slider range", _className)
 
   return (
-    <div className={className}>
+    <div {...otherProps} style={style} className={className}>
       <Slider
         className="wrapped"
         defaultValue={defaultValue}
         onInput={onChange}
         value={value}
-        {...props}
+        {...sliderProps}
       />
     </div>
   )
