@@ -1,6 +1,11 @@
 import { ReactRangeSliderProps } from "react-range-slider-input"
 import { HTMLAttributes } from "react"
 
+type DivProps = Omit<
+  Omit<HTMLAttributes<HTMLDivElement>, keyof RangeSliderBaseProps>,
+  keyof OriginalSliderProps
+>
+
 export type SliderAccent = boolean | "warning" | "error" | "success"
 export type SliderSize = "large" | "small"
 
@@ -14,11 +19,6 @@ export interface RangeSliderBaseProps {
   defaultValue?: RangeSliderValue
   value?: RangeSliderValue
 }
-
-type DivProps = Omit<
-  Omit<HTMLAttributes<HTMLDivElement>, keyof RangeSliderBaseProps>,
-  keyof OriginalSliderProps
->
 
 type OriginalSliderProps = Omit<
   ReactRangeSliderProps,
@@ -54,4 +54,8 @@ export interface SliderProps extends OriginalSliderProps, DivProps {
 export interface RangeSliderProps
   extends RangeSliderBaseProps,
     OriginalSliderProps,
-    DivProps {}
+    DivProps {
+  accent?: SliderAccent
+  color?: SliderColor
+  size?: SliderSize
+}

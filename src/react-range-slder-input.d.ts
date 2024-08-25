@@ -1,3 +1,5 @@
+import { FunctionComponent } from "react"
+
 declare module "react-range-slider-input" {
   export interface ReactRangeSliderProps {
     className?: string
@@ -24,5 +26,6 @@ declare module "react-range-slider-input" {
     orientation?: "horizontal" | "vertical"
   }
 
-  export default React.Component<ReactRangeSliderProps, any>
+  type ReactRangeSlider = FunctionComponent<ReactRangeSliderProps>
+  export default ReactRangeSlider
 }

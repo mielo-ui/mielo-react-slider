@@ -6,21 +6,29 @@ import { SliderProps } from "./Props"
 import * as helpers from "./helpers"
 
 function Slider({
+  orientation = "horizontal",
   defaultValue: _defaultValue,
   className: _className,
   onChange: _onChange,
   value: _value,
   accent,
   color,
-  style,
   size,
   ...rest
 }: SliderProps) {
-  const accentClassName = accent && (accent === true ? "accent" : accent)
-  const sliderProps: any = helpers._sliderProps(rest)
-  const otherProps: any = helpers._otherProps(rest)
+  const sliderRestProps: any = helpers._sliderProps(rest)
+  const otherRestProps: any = helpers._otherProps(rest)
 
-  const className = clsx("mie slider", accentClassName, color, size, _className)
+  const accentClassName = accent && (accent === true ? "accent" : accent)
+
+  const className = clsx(
+    "mie slider",
+    orientation,
+    accentClassName,
+    color,
+    size,
+    _className,
+  )
 
   const onChange = ([_min, max]: number[]) => {
     _onChange?.(max)
@@ -29,16 +37,20 @@ function Slider({
   const defaultValue = !_defaultValue ? undefined : [0, _defaultValue]
   const value = !_value ? undefined : [0, _value]
 
+  const sliderProps = {
+    ...sliderRestProps,
+    thumbsDisabled: [true, false],
+    rangeSlideDisabled: true,
+    onInput: onChange,
+    defaultValue,
+    orientation,
+    className,
+    value,
+  }
+
   return (
-    <div {...otherProps} style={style} className={className}>
-      <ReactSlider
-        {...sliderProps}
-        thumbsDisabled={[true, false]}
-        rangeSlideDisabled={true}
-        defaultValue={defaultValue}
-        onInput={onChange}
-        value={value}
-      />
+    <div className={className} {...otherRestProps}>
+      <ReactSlider {...sliderProps} />
     </div>
   )
 }
